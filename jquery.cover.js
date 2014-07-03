@@ -19,7 +19,7 @@
     }, options);
 	 
 	 // reset on resize
-	 if (options.resize) {
+	 if (this.resize) {
 		 $(window).resize(function() {
 			 t.set();
 		 })
