@@ -1,4 +1,7 @@
 /*! Cover v1.2.0 | MIT License | github.com/antontrollback/cover */
+/* 
+  minor chanegs by kater louis  
+*/
 
 ;(function($) {
 
@@ -6,11 +9,21 @@
 
   function Cover (element, options) {
     this.element = $(element);
+	 var t = this;
 
     $.extend(this, {
+		 // Defaults
       container: this.element.parent(),
-      ratio: this.element.height() / this.element.width()
+      ratio: this.element.height() / this.element.width(),
+		  resize: false
     }, options);
+	 
+	 // reset on resize
+	 if (options.resize) {
+		 $(window).resize(function() {
+			 t.set();
+		 })
+	 }
 
     this.set();
   }
@@ -44,6 +57,7 @@
       if (options === 'set') {
         cover = $.data(this, 'plugin_' + pluginName).set();
       }
+		
     });
   };
 
